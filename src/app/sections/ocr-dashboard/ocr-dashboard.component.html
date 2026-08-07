@@ -1,3 +1,4 @@
 <p>ocr-dashboard works!</p>
+<!-- TODO: Abstract out the input component. -->
 <input type="file" accept=".csv" (change)="onFileUpload($event)">
-<app-policy-table [policies]="mockPolicies"></app-policy-table>
+<app-policy-table [policies]="policies"></app-policy-table>

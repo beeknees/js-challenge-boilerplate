@@ -6,17 +6,18 @@
   </tr>
 </table>
 
+<!-- TODO: figure out why data isn't being passed in -->
 <table class="data-table">
   <thead>
     <th>Policy Number</th>
-    <th>Policy Holder</th>
+    <!-- <th>Policy Holder</th> -->
   </thead>
   <tbody>
     @for (policy of policies; track policy.policyNumber; let i = $index) {
       <tr>
         <td>{{ i + 1 }}</td>
         <td>{{ policy.policyNumber }}</td>
-        <td>{{ policy.policyHolder }}</td>
+        <!-- <td>{{ policy.policyHolder }}</td> -->
       </tr>
     }
   </tbody>

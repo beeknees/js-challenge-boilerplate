@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 
-interface Policy {
+export interface IPolicy {
   policyNumber: string;
-  policyHolder: string;
+  // policyHolder: string;
 }
 
 
@@ -14,6 +14,6 @@ interface Policy {
 })
 export class PolicyTableComponent {
   // TODO: Add typing to this @Input() property to ensure that the data passed in is of the correct type. This will help prevent runtime errors and make the code more maintainable.
-  @Input() policies: Policy[] = [];
+  @Input() policies: IPolicy[] = [];
 
 }
