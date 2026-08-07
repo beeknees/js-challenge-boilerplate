@@ -1,5 +1,11 @@
 import { Component, Input } from '@angular/core';
 
+interface Policy {
+  policyNumber: string;
+  policyHolder: string;
+}
+
+
 @Component({
   selector: 'app-policy-table',
   imports: [],
@@ -7,6 +13,7 @@ import { Component, Input } from '@angular/core';
   styleUrl: './policy-table.component.scss',
 })
 export class PolicyTableComponent {
-  @Input() policies: any[] = [];
+  // TODO: Add typing to this @Input() property to ensure that the data passed in is of the correct type. This will help prevent runtime errors and make the code more maintainable.
+  @Input() policies: Policy[] = [];
 
 }

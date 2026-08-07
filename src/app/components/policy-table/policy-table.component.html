@@ -14,15 +14,10 @@
   <tbody>
     @for (policy of policies; track policy.policyNumber; let i = $index) {
       <tr>
-        <td>{{ i }}</td>
+        <td>{{ i + 1 }}</td>
         <td>{{ policy.policyNumber }}</td>
         <td>{{ policy.policyHolder }}</td>
       </tr>
     }
-    <!-- <tr *ngFor="let policy of policies; let i = index">
-      <td>{{ i }}</td>
-      <td>{{ policy.policyNumber }}</td>
-      <td>{{ policy.policyHolder }}</td>
-    </tr> -->
   </tbody>
 </table>
