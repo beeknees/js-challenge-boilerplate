@@ -1,0 +1,28 @@
+<p>policy-table works!</p>
+<table class="data-table"> 
+  <tr>
+    <td>OCR Dashboard</td>
+    <td>OCR Dashboard</td>
+  </tr>
+</table>
+
+<table class="data-table">
+  <thead>
+    <th>Policy Number</th>
+    <th>Policy Holder</th>
+  </thead>
+  <tbody>
+    @for (policy of policies; track policy.policyNumber; let i = $index) {
+      <tr>
+        <td>{{ i }}</td>
+        <td>{{ policy.policyNumber }}</td>
+        <td>{{ policy.policyHolder }}</td>
+      </tr>
+    }
+    <!-- <tr *ngFor="let policy of policies; let i = index">
+      <td>{{ i }}</td>
+      <td>{{ policy.policyNumber }}</td>
+      <td>{{ policy.policyHolder }}</td>
+    </tr> -->
+  </tbody>
+</table>

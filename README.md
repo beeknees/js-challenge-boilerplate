@@ -22,3 +22,11 @@ To run the app, enter the command ```npm start``` in the terminal.
 
 To run tests, enter the command ```npm test```.
 
+
+## Architecture Outline
+
+- Components - contains reusable components
+- Sections - contains sections of the application that use a collection of the global components
+
+
+
