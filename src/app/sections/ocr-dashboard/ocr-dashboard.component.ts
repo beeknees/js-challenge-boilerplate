@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { IPolicy, PolicyTableComponent } from './components/policy-table/policy-table.component';
 
 @Component({
@@ -23,62 +23,49 @@ export class OcrDashboardComponent {
   ];
 
   public policies: IPolicy[] = [];
+  public selectedFile: File | null = null;
 
 
-  // TODO: figure out why the file needs to be uploaded twice before the data is displayed in the table. This could be due to a change detection issue or a problem with how the data is being passed to the component.
+  constructor(private cdr: ChangeDetectorRef) {}
 
-  public onFileUpload(event: any): void {
-    const file = event.target.files[0];
+  onSelectedFile(file: Event): void {
+    const fileInput = file.target as HTMLInputElement;
     const maxFileSize = 2 * 1024 * 1024; // 2MB TODO: split this out into an input
 
-    if (!file) {
-      console.error('No file selected');
-      return;
-    }
+    
+    // Validate that files actually exist in the selection payload
+    if (fileInput.files && fileInput.files.length > 0) {
+      this.selectedFile = fileInput.files[0];
 
-    if (file.size > maxFileSize) {
-      console.error('File size exceeds the limit');
-      // TODO: show error message to user
-      return;
-    }
+      const reader = new FileReader();
 
-    // TODO: adjust once not testing file type
-    if (file.type !== 'text/csv' && file.type !== 'video/mp4') {
-      console.error('Invalid file type');
-    }
-
-    // console.log('File uploaded:', file.size, maxFileSize);
-
-
-    const reader = new FileReader();
-    // let csvData: string | ArrayBuffer | null = null;
-    let csvData: any; // TODO: type correctly to avoid using 'any'
-
-    // console.log('File uploaded:', file);
-    // CSV data: 457500000,664371495,333333333,457508000,555555555,666666666,777777777,861100036,861100036,123456789
-
-    reader.onload = () => {
-        // TODO: clear out old data to avoid duplicates when uploading a new file
-        this.policies = [];
-
-
-      // TODO: remove this if statement once done testing file size with other file types. This is just to test the file size limit with a csv file.
-      if (file.type === 'text/csv') {
-
-        csvData = reader.result;
-        let csvDataRow = csvData?.split(',');
-
-
-        csvDataRow?.forEach((policyNumber: string) => {
-          this.policies.push({ policyNumber });
-        });
-
-        console.log('CSV data:', csvData);
-        console.log('Policies:', this.policies);
+      if (this.selectedFile.size > maxFileSize) {
+        console.error('File size exceeds the limit');
+        // TODO: show error message to user
+        return;
       }
+
+      // TODO: adjust once not testing file type
+      if (this.selectedFile.type !== 'text/csv' && this.selectedFile.type !== 'video/mp4') {
+        console.error('Invalid file type');
+      }
+      
+      reader.onload = () => {
+        console.log('File content read successfully:', typeof reader.result, reader.result);
+      // CSV data: 457500000,664371495,333333333,457508000,555555555,666666666,777777777,861100036,861100036,123456789
+
+        const result = reader.result;
+
+        if (typeof result === 'string') {
+          const resultItems = result?.split(',');
+          this.policies = resultItems.map((policyNumber) => ({ policyNumber }));
+        }
+
+        console.log('Policies:', this.policies);
+        this.cdr.detectChanges(); // Manually trigger change detection to update the view and resolve issues with displaying old csv data.
+      }
+
+      reader.readAsText(fileInput.files[0]);
     }
-
-    reader.readAsText(file);
-
   }
 }

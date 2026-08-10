@@ -1,5 +1,9 @@
 <h2>OCR File Upload</h2>
 <!-- TODO: Abstract out the input component. -->
  <!-- TODO: remove alternate file types after testing file size and file type -->
-<input type="file" accept=".csv, .jpg, .mp4" (change)="onFileUpload($event)">
+<input type="file" accept=".csv, .mp4" (change)="onSelectedFile($event)"><br>
 <app-policy-table [policies]="policies"></app-policy-table>
+
+
+
+

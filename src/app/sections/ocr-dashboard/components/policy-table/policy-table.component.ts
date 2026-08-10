@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
 
 export interface IPolicy {
   policyNumber: string;
@@ -13,7 +13,15 @@ export interface IPolicy {
   styleUrl: './policy-table.component.scss',
 })
 export class PolicyTableComponent {
-  // TODO: Add typing to this @Input() property to ensure that the data passed in is of the correct type. This will help prevent runtime errors and make the code more maintainable.
   @Input() policies: IPolicy[] = [];
+
+  // ngOnInit() {
+  //   console.log('ONINIT policies:', this.policies);
+  // }
+
+  // ngOnChanges(changes: SimpleChanges<PolicyTableComponent>) {
+  //   // changes.userId contains the old and new value.
+  //   console.log('policies CHANGED:', changes.policies);
+  // }
 
 }
