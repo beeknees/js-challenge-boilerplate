@@ -1,4 +1,5 @@
 <p>ocr-dashboard works!</p>
 <!-- TODO: Abstract out the input component. -->
-<input type="file" accept=".csv" (change)="onFileUpload($event)">
+ <!-- TODO: remove alternate file types after testing file size and file type -->
+<input type="file" accept=".csv, .jpg, .mp4" (change)="onFileUpload($event)">
 <app-policy-table [policies]="policies"></app-policy-table>
