@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IPolicy, PolicyTableComponent } from "../../components/policy-table/policy-table.component";
+import { IPolicy, PolicyTableComponent } from './components/policy-table/policy-table.component';
 
 @Component({
   selector: 'app-ocr-dashboard',
