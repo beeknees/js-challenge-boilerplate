@@ -1,0 +1,41 @@
+@import url('../../../../../styles.scss');
+// breakpoints
+// $breakpoint-medium: 748px;
+
+.policy-table {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Arial', Helvetica, sans-serif;
+    border: 1px solid red;
+
+    th {
+        display: flex;
+        flex-direction: column;
+    }
+
+    tr { display: block; margin-bottom: 25px; }
+
+    td {
+        display: block;
+    }
+}
+
+@media(min-width: 601px) {
+    .policy-table {
+        display: table;
+        border: 1px solid green;
+        color: var(--color-neutral-400);
+
+        th {
+            display: table-header-group;
+        }
+
+        tr {
+            display: table-row;
+        }
+
+        td {
+            display: table-cell;
+        }
+    }
+}

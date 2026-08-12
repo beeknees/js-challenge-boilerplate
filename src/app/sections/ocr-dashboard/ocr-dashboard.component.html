@@ -1,9 +1,15 @@
-<h2>OCR File Upload</h2>
-<!-- TODO: Abstract out the input component. -->
- <!-- TODO: remove alternate file types after testing file size and file type -->
-<input type="file" accept=".csv, .mp4" (change)="onSelectedFile($event)"><br>
-<app-policy-table [policies]="policies"></app-policy-table>
+<h2 class="hdg hdg--2">OCR File Upload</h2>
+<div class="vr vr--x2">
+  <!-- TODO: Abstract out the input component. -->
+  <!-- TODO: remove alternate file types after testing file size and file type -->
+  <input type="file" accept=".csv, .mp4" (change)="onSelectedFile($event)">
+</div>
 
+@if (policies.length > 0) {
+  <div class="vr vr--x4">
+      <app-policy-table [policies]="policies"></app-policy-table>
+  </div>
+}
 
 
 

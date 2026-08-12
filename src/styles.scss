@@ -47,4 +47,79 @@
   --color-neutral-600: #757575;
   --color-neutral-700: #616161;
   --color-neutral-800: #3e3e3e;
+
+
+  // font-weights
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+
+
+}
+
+// breakpoints
+$breakpoint-small: 601px;
+$breakpoint-medium: 768px;
+
+// vertical rhythm spacing, increments of 4px
+$vr-spacing: 4px;
+
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  // padding: 2rem;
+  padding: 1rem;
+  background-color: var(--color-neutral-100);
+  // background-color: var(--color-secondary);
+}
+
+
+// TODO: test different breakpoints
+@media(min-width: $breakpoint-small) {
+  .main-content {
+    background-color: var(--color-blue);
+  }
+}
+
+
+.hdg {
+  font-family: 'Arial', sans-serif;
+}
+
+.hdg--1 {
+  color: var(--color-neutral-black);
+  font-size: 2rem;
+  font-weight: var(--font-weight-bold);
+}
+
+.hdg--2 {
+  color: var(--color-neutral-black);
+  font-size: 1.5rem;
+  font-weight: var(--font-weight-medium);
+}
+
+.hdg--center {
+  text-align: center;
+}
+
+
+
+
+.vr {
+  margin-top: $vr-spacing;
+}
+
+.vr--x2 {
+  margin-top: $vr-spacing * 2;
+}
+
+.vr--x3 {
+  margin-top: $vr-spacing * 3;
+}
+
+.vr--x4 {
+  margin-top: $vr-spacing * 4;
 }
