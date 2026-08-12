@@ -9,19 +9,6 @@ import { IPolicy, PolicyTableComponent } from './components/policy-table/policy-
 })
 export class OcrDashboardComponent {
 
-  // Mock data for demonstration purposes
-  // This will eventually be replaced with the data from a csv file uploaded by the user
-  public mockPolicies = [
-    {
-      policyNumber: '123456789',
-      policyHolder: 'John Doe',
-    },
-    {
-      policyNumber: '2349793245',
-      policyHolder: 'Jane Doe',
-    }
-  ];
-
   public policies: IPolicy[] = [];
   public selectedFile: File | null = null;
 
@@ -30,7 +17,7 @@ export class OcrDashboardComponent {
 
   onSelectedFile(file: Event): void {
     const fileInput = file.target as HTMLInputElement;
-    const maxFileSize = 2 * 1024 * 1024; // 2MB TODO: split this out into an input
+    const maxFileSize = 2 * 1024 * 1024; // 2MB - can this be set in a config file or environment variable? Or is it better to hardcode it here?
 
     
     // Validate that files actually exist in the selection payload
@@ -51,9 +38,7 @@ export class OcrDashboardComponent {
       }
       
       reader.onload = () => {
-        console.log('File content read successfully:', typeof reader.result, reader.result);
       // CSV data: 457500000,664371495,333333333,457508000,555555555,666666666,777777777,861100036,861100036,123456789
-
         const result = reader.result;
 
         if (typeof result === 'string') {
@@ -61,7 +46,6 @@ export class OcrDashboardComponent {
           this.policies = resultItems.map((policyNumber) => ({ policyNumber }));
         }
 
-        console.log('Policies:', this.policies);
         this.cdr.detectChanges(); // Manually trigger change detection to update the view and resolve issues with displaying old csv data.
       }
 

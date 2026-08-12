@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 export interface IPolicy {
   policyNumber: string;
@@ -14,14 +14,4 @@ export interface IPolicy {
 })
 export class PolicyTableComponent {
   @Input() policies: IPolicy[] = [];
-
-  // ngOnInit() {
-  //   console.log('ONINIT policies:', this.policies);
-  // }
-
-  // ngOnChanges(changes: SimpleChanges<PolicyTableComponent>) {
-  //   // changes.userId contains the old and new value.
-  //   console.log('policies CHANGED:', changes.policies);
-  // }
-
 }
