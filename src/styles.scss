@@ -70,6 +70,8 @@ $vr-spacing: 4px;
 .main-content {
   display: flex;
   flex-direction: column;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
   min-height: 100vh;
   // padding: 2rem;
   padding: 1rem;
@@ -87,7 +89,7 @@ $vr-spacing: 4px;
 
 
 .hdg {
-  font-family: 'Arial', sans-serif;
+
 }
 
 .hdg--1 {
