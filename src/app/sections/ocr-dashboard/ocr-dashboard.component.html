@@ -2,7 +2,7 @@
 <div class="vr vr--x2">
   <!-- TODO: Abstract out the input component. -->
   <!-- TODO: remove alternate file types after testing file size and file type -->
-  <input type="file" accept=".csv, .mp4" (change)="onSelectedFile($event)">
+  <input type="file" accept=".csv, .mp4" class="file-input" (change)="onSelectedFile($event)">
 </div>
 
 @if (policies.length > 0) {

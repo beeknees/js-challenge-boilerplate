@@ -50,9 +50,10 @@
 
 
   // font-weights
-  --font-weight-regular: 400;
-  --font-weight-medium: 500;
-  --font-weight-bold: 700;
+  --font-weight-400: 400;
+  --font-weight-500: 500;
+  --font-weight-600: 600;
+  --font-weight-700: 700;
 
 
 
@@ -80,7 +81,7 @@ $vr-spacing: 4px;
 // TODO: test different breakpoints
 @media(min-width: $breakpoint-small) {
   .main-content {
-    background-color: var(--color-blue);
+    // background-color: var(--color-blue);
   }
 }
 
@@ -92,13 +93,13 @@ $vr-spacing: 4px;
 .hdg--1 {
   color: var(--color-neutral-black);
   font-size: 2rem;
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-700);
 }
 
 .hdg--2 {
   color: var(--color-neutral-black);
   font-size: 1.5rem;
-  font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-500);
 }
 
 .hdg--center {

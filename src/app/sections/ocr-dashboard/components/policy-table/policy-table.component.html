@@ -7,8 +7,11 @@
   <tbody>
     @for (policy of policies; track i; let i = $index) {
       <tr>
-        <td>{{ i + 1 }}</td>
-        <td>{{ policy.policyNumber }}</td>
+        <td><span class="isHiddenSmall">{{ i + 1 }}</span></td>
+        <td>
+          <span class="isHiddenMedium">Policy Number:</span>
+          {{ policy.policyNumber }}
+        </td>
       </tr>
     }
   </tbody>
