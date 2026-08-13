@@ -9,8 +9,6 @@ $table-cell-padding: 8px;
   flex-direction: column;
 
   th {
-    // display: flex;
-    // flex-direction: column;
     display: none;
   }
 
@@ -30,7 +28,6 @@ $table-cell-padding: 8px;
     display: table;
     border: 1px solid green;
     border-collapse: collapse;
-    // color: var(--color-neutral-400);
     width: 100%;
 
     & th {

@@ -54,17 +54,17 @@
   --font-weight-500: 500;
   --font-weight-600: 600;
   --font-weight-700: 700;
-
-
-
 }
 
+
+// TODO: import breakpoints into policy table
 // breakpoints
 $breakpoint-small: 601px;
 $breakpoint-medium: 768px;
+$breakpoint-large: 1024px;
 
 // vertical rhythm spacing, increments of 4px
-$vr-spacing: 4px;
+$spacing: 4px;
 
 
 .main-content {
@@ -73,21 +73,25 @@ $vr-spacing: 4px;
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
   min-height: 100vh;
-  // padding: 2rem;
-  padding: 1rem;
+  padding: $spacing * 8;
   background-color: var(--color-neutral-100);
-  // background-color: var(--color-secondary);
 }
 
 
 // TODO: test different breakpoints
 @media(min-width: $breakpoint-small) {
+  .main-content {}
+}
+
+@media(min-width: $breakpoint-large) {
   .main-content {
-    // background-color: var(--color-blue);
+    margin: 0 auto;
+    max-width: $breakpoint-large;
   }
 }
 
 
+// Headings
 .hdg {
 
 }
@@ -109,20 +113,19 @@ $vr-spacing: 4px;
 }
 
 
-
-
+// Vertical Rhythm
 .vr {
-  margin-top: $vr-spacing;
+  margin-top: $spacing;
 }
 
 .vr--x2 {
-  margin-top: $vr-spacing * 2;
+  margin-top: $spacing * 2;
 }
 
 .vr--x3 {
-  margin-top: $vr-spacing * 3;
+  margin-top: $spacing * 3;
 }
 
 .vr--x4 {
-  margin-top: $vr-spacing * 4;
+  margin-top: $spacing * 4;
 }
