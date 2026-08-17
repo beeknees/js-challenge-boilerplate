@@ -1,8 +1,9 @@
-@import url('../../../../../styles.scss');
+// @import url('/src/assets/utils.scss');
+// @use '/src/assets/utils.scss' as utils;
 // breakpoints
-$breakpoint-small: 601px;
-$breakpoint-medium: 768px;
-$breakpoint-large: 1024px;
+$breakpoint__small: 601px;
+$breakpoint__medium: 768px;
+$breakpoint__large: 1024px;
 
 $table-cell-padding: 8px;
 
@@ -21,7 +22,7 @@ $table-cell-padding: 8px;
   }
 }
 
-@media(min-width: $breakpoint-small) {
+@media(min-width: $breakpoint__small) {
   .policy-table {
     display: table;
     border-collapse: collapse;

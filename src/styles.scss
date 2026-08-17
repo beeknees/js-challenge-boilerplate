@@ -1,3 +1,5 @@
+// @use '/src/assets/utils.scss' as utils;
+
 :root {
   --color-primary: #ffc857;
   --color-primary-100: #fbf8f3;
@@ -58,9 +60,9 @@
 
 
 // breakpoints
-$breakpoint-small: 601px;
-$breakpoint-medium: 768px;
-$breakpoint-large: 1024px;
+$breakpoint__small: 601px;
+$breakpoint__medium: 768px;
+$breakpoint__large: 1024px;
 
 // vertical rhythm spacing, increments of 4px
 $spacing: 4px;
@@ -82,7 +84,7 @@ $spacing: 4px;
 }
 
 // Media queries
-@media(min-width: $breakpoint-small) {
+@media(min-width: $breakpoint__small) {
   .main-content {}
 
   .isHiddenSmall {
@@ -94,14 +96,14 @@ $spacing: 4px;
   }
 }
 
-@media(min-width: $breakpoint-medium) {
+@media(min-width: $breakpoint__medium) {
 
 }
 
-@media(min-width: $breakpoint-large) {
+@media(min-width: $breakpoint__large) {
   .main-content {
     margin: 0 auto;
-    max-width: $breakpoint-large;
+    max-width: $breakpoint__large;
   }
 }
 
