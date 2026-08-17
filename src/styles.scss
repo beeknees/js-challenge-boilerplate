@@ -57,7 +57,6 @@
 }
 
 
-// TODO: import breakpoints into policy table
 // breakpoints
 $breakpoint-small: 601px;
 $breakpoint-medium: 768px;
@@ -78,9 +77,25 @@ $spacing: 4px;
 }
 
 
-// TODO: test different breakpoints
+.isHiddenSmall {
+  display: none;
+}
+
+// Media queries
 @media(min-width: $breakpoint-small) {
   .main-content {}
+
+  .isHiddenSmall {
+    display: block;
+  }
+
+  .isHiddenMedium {
+    display: none;
+  }
+}
+
+@media(min-width: $breakpoint-medium) {
+
 }
 
 @media(min-width: $breakpoint-large) {
