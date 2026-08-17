@@ -1,0 +1,47 @@
+// @import url('/src/assets/utils.scss');
+// @use '/src/assets/utils.scss' as utils;
+// breakpoints
+$breakpoint__small: 601px;
+$breakpoint__medium: 768px;
+$breakpoint__large: 1024px;
+
+$table-cell-padding: 8px;
+
+.policy-table {
+  display: flex;
+  flex-direction: column;
+
+  & th {
+    display: none;
+  }
+
+  & tr { display: block; margin-bottom: 25px; }
+
+  & td {
+    display: block;
+  }
+}
+
+@media(min-width: $breakpoint__small) {
+  .policy-table {
+    display: table;
+    border-collapse: collapse;
+    width: 100%;
+
+    & th {
+      display: table-cell;
+      border: 1px solid var(--color-neutral-700);
+      padding: $table-cell-padding;
+    }
+
+    & tr {
+      display: table-row;
+    }
+
+    & td {
+      border: 1px solid var(--color-neutral-700);
+      display: table-cell;
+      padding: $table-cell-padding;
+    }
+  }
+}
