@@ -9,10 +9,11 @@
       <tr>
         <td><span class="isHiddenSmall">{{ i + 1 }}</span></td>
         <td>
-          <span class="isHiddenMedium">Policy Number:</span>
+          <b class="isHiddenMedium">Policy Number: </b>
           {{ policy.policyNumber }}
         </td>
         <td>
+          <b class="isHiddenMedium">Result: </b>
           @if(policy.isValid) {
             <span>Valid</span>
           } @else {

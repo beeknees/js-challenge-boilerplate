@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { IPolicy, PolicyTableComponent } from './components/policy-table/policy-table.component';
+import tr from '@angular/common/locales/tr';
 
 @Component({
   selector: 'app-ocr-dashboard',
@@ -11,6 +12,8 @@ export class OcrDashboardComponent {
 
   public policies: IPolicy[] = [];
   public selectedFile: File | null = null;
+  public hasError: boolean = false;
+  public errorMsg: string = '';
 
 
   constructor(private cdr: ChangeDetectorRef) {}
@@ -59,13 +62,16 @@ export class OcrDashboardComponent {
       const reader = new FileReader();
 
       if (this.selectedFile.size > maxFileSize) {
+        this.hasError = true;
+        this.errorMsg = 'File size exceeds the limit';
         console.error('File size exceeds the limit');
-        // TODO: show error message to user
         return;
       }
 
       // TODO: adjust once not testing file type
       if (this.selectedFile.type !== 'text/csv' && this.selectedFile.type !== 'video/mp4') {
+        this.hasError = true;
+        this.errorMsg = 'Invalid file type';
         console.error('Invalid file type');
       }
       

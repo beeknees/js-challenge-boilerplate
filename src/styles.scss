@@ -129,6 +129,11 @@ $spacing: 4px;
   text-align: center;
 }
 
+.error-msg {
+  color: var(--color-warning);
+  font-weight: var(--font-weight-700);
+}
+
 
 // Vertical Rhythm
 .vr {
