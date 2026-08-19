@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
+import { ApiService } from '../../services/api.service';
+import { EValidationMessages } from '../../utils/validationMessages';
 import { IPolicy, PolicyTableComponent } from './components/policy-table/policy-table.component';
-import { EValidationErrors } from './../../utils/validationErrors';
 
 @Component({
   selector: 'app-ocr-dashboard',
@@ -14,8 +15,13 @@ export class OcrDashboardComponent {
   public selectedFile: File | null = null;
   public hasError: boolean = false;
   public errorMsg: string = '';
+  public successMsg: string = '';
+  public responseId: number = 0;
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private apiService: ApiService,
+  ) {}
 
   checkPolicyValidity(policy: string): boolean {
     let policyDigits = Array.from(policy, Number).reverse();
@@ -47,7 +53,7 @@ export class OcrDashboardComponent {
 
       if (this.selectedFile.size > maxFileSize) {
         this.hasError = true;
-        this.errorMsg = EValidationErrors.FILE_SIZE_ERROR;
+        this.errorMsg = EValidationMessages.FILE_SIZE_ERROR;
         console.error('File size exceeds the limit');
         return;
       }
@@ -55,7 +61,7 @@ export class OcrDashboardComponent {
       // TODO: adjust once not testing file type
       if (this.selectedFile.type !== 'text/csv' && this.selectedFile.type !== 'video/mp4') {
         this.hasError = true;
-        this.errorMsg = EValidationErrors.FILE_TYPE_ERROR;
+        this.errorMsg = EValidationMessages.FILE_TYPE_ERROR;
         console.error('Invalid file type');
       }
       
@@ -85,5 +91,31 @@ export class OcrDashboardComponent {
 
       reader.readAsText(fileInput.files[0]);
     }
+  }
+
+  onSubmit(): void {
+    if (this.policies.length === 0) {
+      return;
+    }
+
+    this.hasError = false;
+    this.errorMsg = EValidationMessages.API_ERROR;
+
+    this.apiService.postPolicyObjects(this.policies).subscribe({
+      next: (response) => {
+        // console.log('API Response:', response.id);
+        this.responseId = response.id;
+      },
+      complete: () => {
+        this.hasError = false;
+        this.successMsg = EValidationMessages.API_SUCCESS;
+        this.cdr.detectChanges();
+      },
+      error: () => {
+        this.hasError = true;
+        this.errorMsg = EValidationMessages.API_ERROR;
+        this.cdr.detectChanges();
+      },
+    });
   }
 }

@@ -132,6 +132,11 @@ $spacing: 4px;
   font-weight: var(--font-weight-700);
 }
 
+.hdg--success-msg {
+  color: var(--color-success);
+  font-weight: var(--font-weight-700);
+}
+
 
 // Vertical Rhythm
 .vr {
@@ -148,4 +153,43 @@ $spacing: 4px;
 
 .vr--x4 {
   margin-top: $spacing * 4;
+}
+
+
+// inputs
+.file-input {
+  color: var(--color-neutral-black);
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: var(--font-weight-700);
+}
+
+.file-input::file-selector-button {
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-neutral-black);
+  border-radius: 4px;
+  color: var(--color-neutral-black);
+  font-size: 14px;
+  font-weight: var(--font-weight-600);
+  padding: 8px 16px;
+}
+
+.file-input::file-selector-button:hover {
+  background-color: var(--color-primary-400);
+  border: 1px solid var(--color-neutral-black);
+  border-radius: 4px;
+  color: var(--color-neutral-black);
+  font-weight: var(--font-weight-600);
+  padding: 8px 16px;
+}
+
+// button styles
+.btn {
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-neutral-black);
+  border-radius: 4px;
+  color: var(--color-neutral-black);
+  font-size: 14px;
+  font-weight: var(--font-weight-600);
+  padding: 8px 16px;
 }
