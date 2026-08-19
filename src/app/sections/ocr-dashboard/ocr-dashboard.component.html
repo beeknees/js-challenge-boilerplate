@@ -1,8 +1,12 @@
 <h2 class="hdg hdg--2">OCR File Upload</h2>
+<div class="vr vr__x2">
+  @if (hasError) {
+    <p class="hdg hdg--error-msg">{{ errorMsg }}</p>
+  }
+</div>
 <div class="vr vr--x2">
-  <!-- TODO: Abstract out the input component. -->
   <!-- TODO: remove alternate file types after testing file size and file type -->
-  <input type="file" accept=".csv, .mp4" class="file-input" (change)="onSelectedFile($event)">
+  <input type="file" accept=".csv, .mp4, .jpg" class="file-input" (change)="onSelectedFile($event)">
 </div>
 
 @if (policies.length > 0) {

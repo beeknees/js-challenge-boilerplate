@@ -109,9 +109,7 @@ $spacing: 4px;
 
 
 // Headings
-.hdg {
-
-}
+.hdg {}
 
 .hdg--1 {
   color: var(--color-neutral-black);
@@ -127,6 +125,11 @@ $spacing: 4px;
 
 .hdg--center {
   text-align: center;
+}
+
+.hdg--error-msg {
+  color: var(--color-warning);
+  font-weight: var(--font-weight-700);
 }
 
 

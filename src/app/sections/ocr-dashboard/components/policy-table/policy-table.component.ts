@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 
 export interface IPolicy {
   policyNumber: string;
-  // policyHolder: string;
+  isValid: boolean;
 }
 
 
