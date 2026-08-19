@@ -62,14 +62,12 @@ export class OcrDashboardComponent {
       reader.onload = () => {
       // CSV data: 457500000,664371495,333333333,457508000,555555555,666666666,777777777,861100036,861100036,123456789
         const result = reader.result;
-
-        console.log('RESULT', typeof result)
+        let newResultsArray: IPolicy[] = []
 
         if (typeof result === 'string') {
           const resultItems = result?.split(',');
           // this.policies = resultItems.map((policyNumber) => ({ policyNumber }));
 
-          let newResultsArray: IPolicy[] = []
 
           resultItems.map((item) => {
             // console.log('item', item, {policyNumber: item, isValid: this.checkPolicyValidity(item)});
