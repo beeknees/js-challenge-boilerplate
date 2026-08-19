@@ -16,13 +16,11 @@ export class OcrDashboardComponent {
 
   constructor(private cdr: ChangeDetectorRef) {}
 
-  checkPolicyValidity(policy: any): any {
-    console.log('policy', policy);
-
+  checkPolicyValidity(policy: string): boolean {
     let policyDigits = Array.from(policy, Number).reverse();
     let policyDigitsCollection: number[] = [];
     
-    policyDigits.forEach((digit: number, index) => {
+    policyDigits.forEach((digit: number, index: number) => {
       let multipliedDigit = digit * (index + 1);
       policyDigitsCollection.push(multipliedDigit);
     });
@@ -68,7 +66,7 @@ export class OcrDashboardComponent {
           const resultItems = result?.split(',');
           // this.policies = resultItems.map((policyNumber) => ({ policyNumber }));
 
-          let newResultsArray: any = []
+          let newResultsArray: IPolicy[] = []
 
           resultItems.map((item) => {
             console.log('item', item, {policyNumber: item, isValid: this.checkPolicyValidity(item)});

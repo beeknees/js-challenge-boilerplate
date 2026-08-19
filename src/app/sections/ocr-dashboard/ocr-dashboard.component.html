@@ -9,7 +9,7 @@
   <input type="file" accept=".csv, .mp4, .jpg" class="file-input" (change)="onSelectedFile($event)">
 </div>
 
-@if (policies.length > 0 && !hasError) {
+@if (policies.length > 0) {
   <div class="vr vr--x4">
       <app-policy-table [policies]="policies"></app-policy-table>
   </div>
