@@ -1,6 +1,5 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { IPolicy, PolicyTableComponent } from './components/policy-table/policy-table.component';
-import tr from '@angular/common/locales/tr';
 
 @Component({
   selector: 'app-ocr-dashboard',
@@ -15,37 +14,23 @@ export class OcrDashboardComponent {
   public hasError: boolean = false;
   public errorMsg: string = '';
 
-
   constructor(private cdr: ChangeDetectorRef) {}
 
-  checkPolicyValidity(policy: string): any {
+  checkPolicyValidity(policy: any): any {
     console.log('policy', policy);
 
     let policyDigits = Array.from(policy, Number).reverse();
     let policyDigitsCollection: number[] = [];
     
-    // console.log('POLICY DIGITS', policyDigits);
-
     policyDigits.forEach((digit: number, index) => {
       let multipliedDigit = digit * (index + 1);
-      // for (let i = 0; i < 9; i++) {
-        
-      //   console.log(i + 1, digit);
-        
-      // }
-      // console.log('multipliedDigit', multipliedDigit, 'RESULT', digit, index);
       policyDigitsCollection.push(multipliedDigit);
     });
-    // console.log('COLLECTIONS', policyDigitsCollection);
 
     const result = policyDigitsCollection.reduce((acc, curr) => acc + curr, 0);
 
-    // const additionDisp = result;
-    // console.log('RESULT AFTER ADDING', result / 11);
-
     const isDivisibleBy11 = (num: number) => num % 11 === 0;
 
-    // console.log('isDivisibleBy11', isDivisibleBy11(result));
     return isDivisibleBy11(result);
 
   }
@@ -62,9 +47,9 @@ export class OcrDashboardComponent {
       const reader = new FileReader();
 
       if (this.selectedFile.size > maxFileSize) {
+        console.error('File size exceeds the limit');
         this.hasError = true;
         this.errorMsg = 'File size exceeds the limit';
-        console.error('File size exceeds the limit');
         return;
       }
 
@@ -83,15 +68,17 @@ export class OcrDashboardComponent {
           const resultItems = result?.split(',');
           // this.policies = resultItems.map((policyNumber) => ({ policyNumber }));
 
+          let newResultsArray: any = []
+
           resultItems.map((item) => {
             console.log('item', item, {policyNumber: item, isValid: this.checkPolicyValidity(item)});
-            this.policies.push({
+            newResultsArray.push({
               policyNumber: item,
               isValid: this.checkPolicyValidity(item)
             })
           });
 
-          console.log('test', 'POLICIES', this.policies)
+          this.policies = newResultsArray;
         }
 
         this.cdr.detectChanges(); // Manually trigger change detection to update the view and resolve issues with displaying old csv data.
