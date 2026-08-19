@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { IPolicy, PolicyTableComponent } from './components/policy-table/policy-table.component';
+import { EValidationErrors } from './../../utils/validationErrors';
 
 @Component({
   selector: 'app-ocr-dashboard',
@@ -45,22 +46,24 @@ export class OcrDashboardComponent {
       const reader = new FileReader();
 
       if (this.selectedFile.size > maxFileSize) {
-        console.error('File size exceeds the limit');
         this.hasError = true;
-        this.errorMsg = 'File size exceeds the limit';
+        this.errorMsg = EValidationErrors.FILE_SIZE_ERROR;
+        console.error('File size exceeds the limit');
         return;
       }
 
       // TODO: adjust once not testing file type
       if (this.selectedFile.type !== 'text/csv' && this.selectedFile.type !== 'video/mp4') {
         this.hasError = true;
-        this.errorMsg = 'Invalid file type';
+        this.errorMsg = EValidationErrors.FILE_TYPE_ERROR;
         console.error('Invalid file type');
       }
       
       reader.onload = () => {
       // CSV data: 457500000,664371495,333333333,457508000,555555555,666666666,777777777,861100036,861100036,123456789
         const result = reader.result;
+
+        console.log('RESULT', typeof result)
 
         if (typeof result === 'string') {
           const resultItems = result?.split(',');
@@ -69,7 +72,7 @@ export class OcrDashboardComponent {
           let newResultsArray: IPolicy[] = []
 
           resultItems.map((item) => {
-            console.log('item', item, {policyNumber: item, isValid: this.checkPolicyValidity(item)});
+            // console.log('item', item, {policyNumber: item, isValid: this.checkPolicyValidity(item)});
             newResultsArray.push({
               policyNumber: item,
               isValid: this.checkPolicyValidity(item)
