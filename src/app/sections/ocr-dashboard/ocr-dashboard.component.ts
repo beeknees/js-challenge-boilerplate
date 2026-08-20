@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Component } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { EValidationMessages } from '../../utils/validationMessages';
 import { IPolicy, PolicyTableComponent } from './components/policy-table/policy-table.component';
+import { checkPolicyValidity } from '../../utils/checkPolicyValidity';
 
 @Component({
   selector: 'app-ocr-dashboard',
@@ -22,23 +23,6 @@ export class OcrDashboardComponent {
     private cdr: ChangeDetectorRef,
     private apiService: ApiService,
   ) {}
-
-  checkPolicyValidity(policy: string): boolean {
-    let policyDigits = Array.from(policy, Number).reverse();
-    let policyDigitsCollection: number[] = [];
-    
-    policyDigits.forEach((digit: number, index: number) => {
-      let multipliedDigit = digit * (index + 1);
-      policyDigitsCollection.push(multipliedDigit);
-    });
-
-    const result = policyDigitsCollection.reduce((acc, curr) => acc + curr, 0);
-
-    const isDivisibleBy11 = (num: number) => num % 11 === 0;
-
-    return isDivisibleBy11(result);
-
-  }
 
   onSelectedFile(file: Event): void {
     const fileInput = file.target as HTMLInputElement;
@@ -79,7 +63,7 @@ export class OcrDashboardComponent {
             // console.log('item', item, {policyNumber: item, isValid: this.checkPolicyValidity(item)});
             newResultsArray.push({
               policyNumber: item,
-              isValid: this.checkPolicyValidity(item)
+              isValid: checkPolicyValidity(item)
             })
           });
 
@@ -93,7 +77,7 @@ export class OcrDashboardComponent {
     }
   }
 
-  onSubmit(): void {
+  onSubmitPolicies(): void {
     if (this.policies.length === 0) {
       return;
     }
@@ -103,7 +87,6 @@ export class OcrDashboardComponent {
 
     this.apiService.postPolicyObjects(this.policies).subscribe({
       next: (response) => {
-        // console.log('API Response:', response.id);
         this.responseId = response.id;
       },
       complete: () => {

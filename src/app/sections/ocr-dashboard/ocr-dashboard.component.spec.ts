@@ -32,7 +32,7 @@ describe('OcrDashboardComponent', () => {
     const policies = [{ policyNumber: '123456789', isValid: true }];
     component.policies = policies;
 
-    component.onSubmit();
+    component.onSubmitPolicies();
 
     expect(apiService.postPolicyObjects).toHaveBeenCalledWith(policies);
   });
