@@ -1,8 +1,8 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { ApiService } from '../../services/api.service';
+import { checkPolicyValidity } from '../../utils/checkPolicyValidity';
 import { EValidationMessages } from '../../utils/validationMessages';
 import { IPolicy, PolicyTableComponent } from './components/policy-table/policy-table.component';
-import { checkPolicyValidity } from '../../utils/checkPolicyValidity';
 
 @Component({
   selector: 'app-ocr-dashboard',

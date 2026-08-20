@@ -1,18 +1,17 @@
-import { Injectable, Service } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { IPolicy } from '../sections/ocr-dashboard/components/policy-table/policy-table.component';
 
-// @Service()
 @Injectable({ providedIn: 'root' })
 
-
 export class ApiService {
+  POLICIES__POSTS = 'https://jsonplaceholder.typicode.com/posts';
+
   constructor(private _http: HttpClient) {}
 
 
-  postPolicyObjects(test: any): Observable<any> {
-    console.log(test);
-
-    return this._http.post<any>('https://jsonplaceholder.typicode.com/posts', test);
+  postPolicyObjects(policies: IPolicy[]): Observable<any> {
+    return this._http.post<IPolicy[]>(this.POLICIES__POSTS, policies);
   }
 }
