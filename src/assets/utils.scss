@@ -1,0 +1,37 @@
+// @use '/src/styles.scss' as stuff;
+// @import url('/src/styles.scss');
+
+// breakpoints
+$breakpoint__small: 601px;
+$breakpoint__medium: 768px;
+$breakpoint__large: 1024px;
+
+// Utilities for showing and hiding content based on breakpoints.
+
+.isHiddenSmall {
+  display: none;
+}
+
+// Media queries
+@media(min-width: $breakpoint__small) {
+  .main-content {}
+
+  .isHiddenSmall {
+    display: block;
+  }
+
+  .isHiddenMedium {
+    display: none;
+  }
+}
+
+@media(min-width: $breakpoint__medium) {
+  // add medium or tablet specific styles here.
+}
+
+@media(min-width: $breakpoint__large) {
+  .main-content {
+    margin: 0 auto;
+    max-width: $breakpoint__large;
+  }
+}

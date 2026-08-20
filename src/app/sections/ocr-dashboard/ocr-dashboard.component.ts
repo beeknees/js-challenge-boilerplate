@@ -43,7 +43,7 @@ export class OcrDashboardComponent {
       }
 
       // TODO: adjust once not testing file type
-      if (this.selectedFile.type !== 'text/csv' && this.selectedFile.type !== 'video/mp4') {
+      if (this.selectedFile.type !== 'text/csv') {
         this.hasError = true;
         this.errorMsg = EValidationMessages.FILE_TYPE_ERROR;
         console.error('Invalid file type');

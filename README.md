@@ -33,7 +33,6 @@ To run tests, enter the command ```npm test```.
 ## CSS
 Currently all CSS, except for the policy table, is contained in the `styles.scss` file. These are global headings, color variables, vertical spacing, error and success message styles. This also includes breakpoints for responsive design. The `policy-table.scss` is specific to that component, however, as mentioned before, if this becomes a more global component, it can be abstracted out into a global components directory.
 
-
 ## Enhancements
 Depending on the scalability of the application, feature flags for specific permission UI accessibility and environment variables could be used/added.
 

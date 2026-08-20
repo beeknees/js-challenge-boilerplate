@@ -4,5 +4,5 @@ import { OcrDashboardComponent } from './sections/ocr-dashboard/ocr-dashboard.co
 
 export const routes: Routes = [
     { path: '', component: AppComponent },
-    { path: 'dashboard', component: OcrDashboardComponent }
+    { path: 'dashboard', component: OcrDashboardComponent } // in case there needs to be a separate URL for the OCR section/page
 ];

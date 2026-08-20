@@ -9,8 +9,8 @@
  *    checksum calculation: (d1+(2*d2)+(3*d3)+...+(9*d9)) mod 11 = 0 
  */
 
-export function checkPolicyValidity(policy: string): boolean {
-  let policyDigits = Array.from(policy, Number).reverse();
+export function checkPolicyValidity(policyNumber: string): boolean {
+  let policyDigits = Array.from(policyNumber, Number).reverse();
   let policyDigitsCollection: number[] = [];
   
   policyDigits.forEach((digit: number, index: number) => {
@@ -18,7 +18,7 @@ export function checkPolicyValidity(policy: string): boolean {
     policyDigitsCollection.push(multipliedDigit);
   });
 
-  const result = policyDigitsCollection.reduce((acc, curr) => acc + curr, 0);
+  const result = policyDigitsCollection.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
 
   const isDivisibleBy11 = (num: number) => num % 11 === 0;
 

@@ -65,94 +65,14 @@ $breakpoint__large: 1024px;
 // vertical rhythm spacing, increments of 4px
 $spacing: 4px;
 
-
 .main-content {
   display: flex;
   flex-direction: column;
-  font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
   min-height: 100vh;
   padding: $spacing * 8;
   background-color: var(--color-neutral-100);
 }
-
-
-.isHiddenSmall {
-  display: none;
-}
-
-// Media queries
-@media(min-width: $breakpoint__small) {
-  .main-content {}
-
-  .isHiddenSmall {
-    display: block;
-  }
-
-  .isHiddenMedium {
-    display: none;
-  }
-}
-
-@media(min-width: $breakpoint__medium) {
-
-}
-
-@media(min-width: $breakpoint__large) {
-  .main-content {
-    margin: 0 auto;
-    max-width: $breakpoint__large;
-  }
-}
-
-
-// Headings
-.hdg {}
-
-.hdg--1 {
-  color: var(--color-neutral-black);
-  font-size: 2rem;
-  font-weight: var(--font-weight-700);
-}
-
-.hdg--2 {
-  color: var(--color-neutral-black);
-  font-size: 1.5rem;
-  font-weight: var(--font-weight-500);
-}
-
-.hdg--center {
-  text-align: center;
-}
-
-.hdg--error-msg {
-  color: var(--color-warning);
-  font-weight: var(--font-weight-700);
-}
-
-.hdg--success-msg {
-  color: var(--color-success);
-  font-weight: var(--font-weight-700);
-}
-
-
-// Vertical Rhythm
-.vr {
-  margin-top: $spacing;
-}
-
-.vr--x2 {
-  margin-top: $spacing * 2;
-}
-
-.vr--x3 {
-  margin-top: $spacing * 3;
-}
-
-.vr--x4 {
-  margin-top: $spacing * 4;
-}
-
 
 // inputs
 .file-input {
