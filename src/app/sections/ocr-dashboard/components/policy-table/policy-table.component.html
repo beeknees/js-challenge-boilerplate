@@ -1,11 +1,13 @@
 <table class="policy-table">
   <thead>
-    <th>&nbsp;</th>
-    <th>Policy Number</th>
-    <th>Result</th>
+    <tr>
+      <th>&nbsp;</th>
+      <th>Policy Number</th>
+      <th>Result</th>
+    </tr>
   </thead>
   <tbody>
-    @for (policy of policies; track i; let i = $index) {
+    @for (policy of policies; track $index; let i = $index) {
       <tr>
         <td><span class="isHiddenSmall">{{ i + 1 }}</span></td>
         <td>
@@ -15,9 +17,9 @@
         <td>
           <b class="isHiddenMedium">Result: </b>
           @if(policy.isValid) {
-            <span>Valid</span>
+            <span class="hdg hdg--success-msg">Valid</span>
           } @else {
-            <span>Error</span>
+            <span class="hdg hdg--error-msg">Error</span>
           }
         </td>
       </tr>

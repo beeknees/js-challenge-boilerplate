@@ -1,6 +1,8 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
+import { ApiService } from '../../services/api.service';
+import { checkPolicyValidity } from '../../utils/checkPolicyValidity';
+import { EValidationMessages } from '../../utils/validationMessages';
 import { IPolicy, PolicyTableComponent } from './components/policy-table/policy-table.component';
-import { EValidationErrors } from './../../utils/validationErrors';
 
 @Component({
   selector: 'app-ocr-dashboard',
@@ -14,25 +16,13 @@ export class OcrDashboardComponent {
   public selectedFile: File | null = null;
   public hasError: boolean = false;
   public errorMsg: string = '';
+  public successMsg: string = '';
+  public responseId: number = 0;
 
-  constructor(private cdr: ChangeDetectorRef) {}
-
-  checkPolicyValidity(policy: string): boolean {
-    let policyDigits = Array.from(policy, Number).reverse();
-    let policyDigitsCollection: number[] = [];
-    
-    policyDigits.forEach((digit: number, index: number) => {
-      let multipliedDigit = digit * (index + 1);
-      policyDigitsCollection.push(multipliedDigit);
-    });
-
-    const result = policyDigitsCollection.reduce((acc, curr) => acc + curr, 0);
-
-    const isDivisibleBy11 = (num: number) => num % 11 === 0;
-
-    return isDivisibleBy11(result);
-
-  }
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private apiService: ApiService,
+  ) {}
 
   onSelectedFile(file: Event): void {
     const fileInput = file.target as HTMLInputElement;
@@ -47,7 +37,7 @@ export class OcrDashboardComponent {
 
       if (this.selectedFile.size > maxFileSize) {
         this.hasError = true;
-        this.errorMsg = EValidationErrors.FILE_SIZE_ERROR;
+        this.errorMsg = EValidationMessages.FILE_SIZE_ERROR;
         console.error('File size exceeds the limit');
         return;
       }
@@ -55,25 +45,25 @@ export class OcrDashboardComponent {
       // TODO: adjust once not testing file type
       if (this.selectedFile.type !== 'text/csv' && this.selectedFile.type !== 'video/mp4') {
         this.hasError = true;
-        this.errorMsg = EValidationErrors.FILE_TYPE_ERROR;
+        this.errorMsg = EValidationMessages.FILE_TYPE_ERROR;
         console.error('Invalid file type');
       }
       
       reader.onload = () => {
-      // CSV data: 457500000,664371495,333333333,457508000,555555555,666666666,777777777,861100036,861100036,123456789
+      // CSV data example: 
+      // 457500000,664371495,333333333,457508000,555555555,666666666,777777777,861100036,861100036,123456789
         const result = reader.result;
         let newResultsArray: IPolicy[] = []
 
         if (typeof result === 'string') {
           const resultItems = result?.split(',');
-          // this.policies = resultItems.map((policyNumber) => ({ policyNumber }));
 
-
+          // Calculates the checksum for a given number, and identifies if it is a valid policy number.  
+          // Then updates the array of policy numbers contain the policy number and valid status as an object. 
           resultItems.map((item) => {
-            // console.log('item', item, {policyNumber: item, isValid: this.checkPolicyValidity(item)});
             newResultsArray.push({
               policyNumber: item,
-              isValid: this.checkPolicyValidity(item)
+              isValid: checkPolicyValidity(item)
             })
           });
 
@@ -85,5 +75,30 @@ export class OcrDashboardComponent {
 
       reader.readAsText(fileInput.files[0]);
     }
+  }
+
+  onSubmitPolicies(): void {
+    if (this.policies.length === 0) {
+      return;
+    }
+
+    this.hasError = false;
+    this.errorMsg = EValidationMessages.API_ERROR;
+
+    this.apiService.postPolicyObjects(this.policies).subscribe({
+      next: (response) => {
+        this.responseId = response.id;
+      },
+      complete: () => {
+        this.hasError = false;
+        this.successMsg = EValidationMessages.API_SUCCESS;
+        this.cdr.detectChanges();
+      },
+      error: () => {
+        this.hasError = true;
+        this.errorMsg = EValidationMessages.API_ERROR;
+        this.cdr.detectChanges();
+      },
+    });
   }
 }
