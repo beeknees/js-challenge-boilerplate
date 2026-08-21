@@ -8,35 +8,39 @@ $table-cell-padding: 8px;
 .policy-table {
   display: flex;
   flex-direction: column;
+  font-family: "Inter", sans-serif;
 
-  & th {
+  &__header__cell {
     display: none;
   }
 
-  & tr { display: block; margin-bottom: 25px; }
+  &__row { 
+    display: block; 
+    margin-bottom: 25px; 
+  }
 
-  & td {
+  &__row__cell {
     display: block;
   }
 }
 
 @media(min-width: $breakpoint__small) {
   .policy-table {
-    display: table;
     border-collapse: collapse;
+    display: table;
     width: 100%;
 
-    & th {
-      display: table-cell;
+    &__header__cell {
       border: 1px solid var(--color-neutral-700);
+      display: table-cell;
       padding: $table-cell-padding;
     }
 
-    & tr {
+    &__row {
       display: table-row;
     }
 
-    & td {
+    &__row__cell {
       border: 1px solid var(--color-neutral-700);
       display: table-cell;
       padding: $table-cell-padding;

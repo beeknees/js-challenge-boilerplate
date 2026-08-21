@@ -1,0 +1,19 @@
+// Vertical Rhythm system for top down spacing
+// vertical rhythm spacing, increments of 4px
+$spacing: 4px;
+
+.vr {
+  margin-top: $spacing;
+}
+
+.vr--x2 {
+  margin-top: $spacing * 2;
+}
+
+.vr--x3 {
+  margin-top: $spacing * 3;
+}
+
+.vr--x4 {
+  margin-top: $spacing * 4;
+}

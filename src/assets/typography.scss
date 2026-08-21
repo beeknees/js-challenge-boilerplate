@@ -1,0 +1,30 @@
+// Headings and typography
+.hdg {
+  font-family: "Inter", sans-serif; // font family taken from Kin customer facing web application.
+}
+
+.hdg--1 {
+  color: var(--color-neutral-black);
+  font-size: 2rem;
+  font-weight: var(--font-weight-700);
+}
+
+.hdg--2 {
+  color: var(--color-neutral-black);
+  font-size: 1.5rem;
+  font-weight: var(--font-weight-500);
+}
+
+.hdg--center {
+  text-align: center;
+}
+
+.hdg--error-msg {
+  color: var(--color-warning);
+  font-weight: var(--font-weight-700);
+}
+
+.hdg--success-msg {
+  color: var(--color-success-600);
+  font-weight: var(--font-weight-700);
+}

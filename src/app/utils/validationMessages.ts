@@ -1,5 +1,5 @@
 /**
- * Displays error messages based on file upload results.
+ * Displays error messages based on file upload and api results.
  */
 
 export enum EValidationMessages {

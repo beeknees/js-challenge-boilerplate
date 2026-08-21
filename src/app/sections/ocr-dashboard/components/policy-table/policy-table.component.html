@@ -1,20 +1,20 @@
 <table class="policy-table">
-  <thead>
+  <thead class="policy-table__header">
     <tr>
-      <th>&nbsp;</th>
-      <th>Policy Number</th>
-      <th>Result</th>
+      <th class="policy-table__header__cell">&nbsp;</th>
+      <th class="policy-table__header__cell">Policy Number</th>
+      <th class="policy-table__header__cell">Result</th>
     </tr>
   </thead>
   <tbody>
     @for (policy of policies; track $index; let i = $index) {
-      <tr>
-        <td><span class="isHiddenSmall">{{ i + 1 }}</span></td>
-        <td>
+      <tr class="policy-table__row">
+        <td class="policy-table__row__cell">{{ i + 1 }}</td>
+        <td class="policy-table__row__cell">
           <b class="isHiddenMedium">Policy Number: </b>
           {{ policy.policyNumber }}
         </td>
-        <td>
+        <td class="policy-table__row__cell">
           <b class="isHiddenMedium">Result: </b>
           @if(policy.isValid) {
             <span class="hdg hdg--success-msg">Valid</span>
