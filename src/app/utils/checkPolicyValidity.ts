@@ -18,7 +18,7 @@ export function checkPolicyValidity(policyNumber: string): boolean {
     policyDigitsCollection.push(multipliedDigit);
   });
 
-  const result = policyDigitsCollection.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+  const result = policyDigitsCollection.reduce((acc, currentValue) => acc + currentValue, 0);
 
   const isDivisibleBy11 = (num: number) => num % 11 === 0;
 
