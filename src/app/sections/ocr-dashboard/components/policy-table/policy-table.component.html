@@ -9,7 +9,7 @@
   <tbody>
     @for (policy of policies; track $index; let i = $index) {
       <tr class="policy-table__row">
-        <td class="policy-table__row__cell"><span class="isHiddenSmall">{{ i + 1 }}</span></td>
+        <td class="policy-table__row__cell">{{ i + 1 }}</td>
         <td class="policy-table__row__cell">
           <b class="isHiddenMedium">Policy Number: </b>
           {{ policy.policyNumber }}

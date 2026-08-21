@@ -1,5 +1,7 @@
 # KinOcr
 
+This is an Angular version 22 project that uses custom CSS and not a library such as Angular Material or Bootstrap. The node version required to run this project is a minimum of `22.22.3`, `24.15.0`, or `26.0.0`.
+
 ## Instructions
 
 Your Kin recruiting contact should have sent you a set of instructions for this test.
@@ -37,7 +39,9 @@ Furthermore, once their csv is uploaded the policies are displayed in a table, t
 - Utils - this directory only contains enums currently - something that was set up to contain validation messages. In the future, this could contain any type of reusable utility functions. This also contains the `checksums` file, where utility functions like a checksum, could be accessed from other components within the application.
 
 ## CSS
-Currently all CSS, except for the policy table, is contained in the `styles.scss` file. These are global headings, color variables, vertical spacing, error and success message styles. This also includes breakpoints for responsive design. The `policy-table.scss` is specific to that component, however, as mentioned before, if this becomes a more global component, it can be abstracted out into a global components directory.
+Currently all CSS, except for the policy table, is contained in the `styles.scss` file. These are global headings, color variables, vertical spacing, error and success message styles. These are split out into separate scss files for readability. In addition there are also breakpoints for responsive design. The `policy-table.scss` is specific to that component, however, as mentioned before, if this becomes a more global component, it can be abstracted out into a global components directory.
+
+Note: there were issues importing the breakpoints into each scss file, and therefore it is a bit repetitive declaring them in each scss file. If this can be resolved to be more efficient, that should be implemented.
 
 ## Enhancements
 Depending on the scalability of the application, feature flags for specific permissions or accessing specific parts of the UI could be added as well as environment variables or a system for adding and using API endpoints.
