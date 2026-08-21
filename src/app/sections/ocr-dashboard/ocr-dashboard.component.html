@@ -11,7 +11,9 @@
   }
 </div>
 <div class="vr vr--x2">
-  <input type="file" accept=".csv" class="file-input" (change)="onSelectedFile($event)">
+  <label aria-label="file-upload">
+    <input type="file" accept=".csv" class="file-input" (change)="onSelectedFile($event)">
+  </label>
 </div>
 
 @if (policies.length > 0) {
