@@ -2,6 +2,8 @@
 
 This is an Angular version 22 project that uses custom CSS and not a library such as Angular Material or Bootstrap. The node version required to run this project is a minimum of `22.22.3`, `24.15.0`, or `26.0.0`.
 
+Please run `npm install` to set up the project. Angular cli was used to generate the components within the project. To get more help on the Angular CLI use `ng help` or go check out Angular cli here: https://angular.dev/tools/cli or https://github.com/angular/angular-cli/blob/main/README.md
+
 ## Instructions
 
 Your Kin recruiting contact should have sent you a set of instructions for this test.
@@ -21,6 +23,8 @@ Please use the `./sample.csv` file as input into your application.
 The app will default to running on localhost:4200.
 
 To run the app, enter the command ```npm start``` in the terminal. 
+
+Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 To run tests, enter the command ```npm test```.
 
